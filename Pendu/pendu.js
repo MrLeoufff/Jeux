@@ -10,6 +10,7 @@ TODO list :
 const allWords = ["fleur", "montagne", "ministre", "constitution", "dictateur", "corompre", "petrole", "prisonnier"];
 const buttonPlay = document.getElementById("beginGame");
 const wordToFindDiv = document.getElementById("wordToFindDiv");
+const keyBoardDiv = document.getElementById("keyBoard");
 
 buttonPlay.addEventListener("click", function() {
     beginGame();
@@ -32,6 +33,36 @@ function beginGame() {
     });
     table.appendChild(line);
     wordToFindDiv.appendChild(table);
+
+    generateKeyBoard();
+}
+
+function generateKeyBoard() {
+    keyBoardDiv.innerHTML = "";
+    let Alphabet = generateAlphabet();
+    Alphabet.forEach(letter => {
+        let lettreDiv = document.createElement("div");
+        lettreDiv.innerHTML = letter;
+        lettreDiv.classList.add("letterKeyBoard");
+        keyBoardDiv.appendChild(lettreDiv);
+    });
+}
+
+// function generateAlphabet(capital = false) {
+// 	return [...Array(26)].map((_, i) => String.fromCharCode(i + (capital ? 65 : 97)));
+// }
+
+function generateAlphabet(capital = false) {
+    let tab = [];
+    for (i = 0; i < 26; i++) {
+        if(capital) {
+            tab.push(String.fromCharCode(i + 65))
+        }
+        else {
+            tab.push(String.fromCharCode(i + 97))
+        }
+    }
+    return tab
 }
 
 function generateWord() {
