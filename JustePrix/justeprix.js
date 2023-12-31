@@ -1,4 +1,4 @@
-import { Conffeti } from "../lib/conffeti.js";
+import { Confetti } from "../lib/confetti.js";
 // Générer un chiffre en aléatoire
 // L'utilisateur fera ,des propositions
 // Continuer tant que le prix n'est pas bon
@@ -55,7 +55,7 @@ function checkPropal() {
 }
 
 function launchGame() {
-  Conffeti.stopAnimationConffeti();
+  Confetti.stopAnimationConfeti();
   NumberToFind = getRandomInt(1000);
   // Compte a rebours
   console.log(NumberToFind);
@@ -83,19 +83,19 @@ function launchGame() {
     } else if (TempsRestant < 0) {
       clearInterval(compteurInterval);
       // Partie terminer
-
       endGame(false);
     }
   }, 1000);
 }
 
+
 function endGame(gagne) {
   if (gagne) {
-    Conffeti.launchAnimationConffeti();
+    Confetti.launchAnimationConfeti();
     let audio = new Audio("audio/gagné.mp3");
     audio.play();
     setTimeout(() => {
-      Conffeti.stopAnimationConffeti();
+      Confetti.stopAnimationConfeti();
     }, 5000);
   } else {
     let audio = new Audio("audio/tes_mauvais_jack.mp3");
